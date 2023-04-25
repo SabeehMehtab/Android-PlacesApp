@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardCornerRadius="@dimen/item_happy_place_cv_corner_radius"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/ic_launcher"
+            app:civ_border_color="@color/gray"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginEnd="7dp"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Name"
+                android:textStyle="bold"
+                android:textSize="19sp"
+                android:textColor="@color/bettergray"
+
+                />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:ellipsize="end"
+                tools:text="Description"
+                android:textStyle="italic"
+                android:textSize="15sp"
+                android:textColor="@color/bettergray"
+                />
+
+        </LinearLayout>
+
+        <!--
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Name"
+            android:textStyle="bold"
+            android:textSize="19sp"
+            android:textColor="@color/bettergray"
+            app:layout_constraintStart_toEndOf="@id/civ"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="7dp"
+            />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Description"
+            android:textStyle="italic"
+            android:textSize="15sp"
+            android:textColor="@color/bettergray"
+            app:layout_constraintStart_toEndOf="@id/civ"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="7dp"
+            />
+            -->
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
