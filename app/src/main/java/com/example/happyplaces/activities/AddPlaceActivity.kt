@@ -80,7 +80,7 @@ class AddPlaceActivity : AppCompatActivity(), View.OnClickListener {
             onBackPressed()
         }
         dateSetListener = DatePickerDialog.OnDateSetListener { datePicker, year, month, dayOfMonth ->
-            // you could also you datePicker in the set method for year, month and dayOfMonth
+            // you could also use datePicker in the set method for year, month and dayOfMonth
             calendar.set(year,month,dayOfMonth)
             setDateInView()
         }
@@ -138,17 +138,40 @@ class AddPlaceActivity : AppCompatActivity(), View.OnClickListener {
                 showImageDialog()
             }
             R.id.et_location -> {
-                try {
-                    val fields = listOf(
-                        Place.Field.ID, Place.Field.NAME,
-                        Place.Field.LAT_LNG, Place.Field.ADDRESS)
-                    val mapsIntent = Autocomplete.IntentBuilder(
-                        AutocompleteActivityMode.FULLSCREEN, fields
-                    ).build(this@AddPlaceActivity)
-                    googleMapsResultLauncher.launch(mapsIntent)
-                } catch (e:Exception) {
-                    e.printStackTrace()
+                if(!isLocationEnabled()) {
+                    Toast.makeText(
+                        this,
+                        "Your location provider is turned off. Please turn it on.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    // This will redirect you to settings from where you need to turn on the location provider.
+                    val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+                    startActivity(intent)
+                } else {
+                    try {
+                        val fields = listOf(
+                            Place.Field.ID, Place.Field.NAME,
+                            Place.Field.LAT_LNG, Place.Field.ADDRESS)
+                        val mapsIntent = Autocomplete.IntentBuilder(
+                            AutocompleteActivityMode.FULLSCREEN, fields
+                        ).build(this@AddPlaceActivity)
+                        googleMapsResultLauncher.launch(mapsIntent)
+                    } catch (e:Exception) {
+                        e.printStackTrace()
+                    }
                 }
+//                try {
+//                    val fields = listOf(
+//                        Place.Field.ID, Place.Field.NAME,
+//                        Place.Field.LAT_LNG, Place.Field.ADDRESS)
+//                    val mapsIntent = Autocomplete.IntentBuilder(
+//                        AutocompleteActivityMode.FULLSCREEN, fields
+//                    ).build(this@AddPlaceActivity)
+//                    googleMapsResultLauncher.launch(mapsIntent)
+//                } catch (e:Exception) {
+//                    e.printStackTrace()
+//                }
             }
             R.id.iv_current_location -> {
                 if(!isLocationEnabled()) {

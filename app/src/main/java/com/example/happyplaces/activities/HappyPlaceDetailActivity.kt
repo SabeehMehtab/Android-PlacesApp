@@ -30,6 +30,7 @@ class HappyPlaceDetailActivity : AppCompatActivity() {
             binding.image.setImageURI(Uri.parse(happyPlaceModel!!.image_uri))
             binding.location.text = happyPlaceModel!!.location
             binding.description.text = happyPlaceModel!!.description
+            binding.date.text = happyPlaceModel!!.date
         }
 
         binding.btnViewOnMap.setOnClickListener {
